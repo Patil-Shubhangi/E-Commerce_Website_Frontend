@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="contact.css">
+    <title>AgriTradeHub | Contact</title>
+</head>
+
+<body background="https://wallpapercave.com/wp/wp3592411.jpg">
+    <header>
+        <div class="bx bx-moon" id="darkMode-icon"></div>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- contact section design -->
+    <section class="contact " id="contact ">
+        <h2 class="heading ">Contact <span>Me!</span></h2>
+
+        <form action="# ">
+            <div class="input-box ">
+                <input type="text " placeholder="Full Name ">
+                <input type="email " placeholder="Email Address ">
+            </div>
+            <div class="input-box ">
+                <input type="number " placeholder="Mobile Number ">
+                <input type="text " placeholder="Email Subject ">
+            </div>
+            <textarea name=" " id=" " cols="30 " rows="10 " placeholder="Your Message "></textarea>
+            <input type="button " value="Send Message " class="btn ">
+        </form>
+    </section>
+
+    <!-- footer design -->
+    <footer class="footer ">
+        <div class="footer-text ">
+            <p>Copyright &copy; AgriTradeHub2024 | All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-iconTop ">
+            <a href="Main.html "><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal "></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js "></script>
+
+    <script>
+        /*menu icon navbar*/
+        let menuIcon = document.querySelector('#menu-icon');
+        let navbar = document.querySelector('.navbar');
+
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('bx-x');
+            navbar.classList.toggle('active');
+        };
+
+        /* scroll sections active link */
+        let sections = document.querySelectorAll('section');
+        let navLinks = document.querySelectorAll('header nav a');
+
+        window.onscroll = () => {
+            sections.forEach(sec => {
+                let top = window.scrollY;
+                let offset = sec.offsetTop - 150;
+                let height = sec.offsetHeight;
+                let id = sec.getAttribute('id');
+
+                if (top >= offset && top < offset + height) {
+                    navLinks.forEach(links => {
+                        links.classList.remove('active');
+                        document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+                    });
+                };
+            });
+
+            let header = document.querySelector('.header');
+
+            header.classList.toggle('sticky', window.scrollY > 100);
+            menuIcon.classList.remove('bx-x');
+            navbar.classList.remove('active');
+
+        };
+
+        /*swiper*/
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 50,
+            loop: true,
+            grabCursor: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+
+        /*dark light mode */
+        let darkModeIcon = document.querySelector('#darkMode-icon');
+
+        darkModeIcon.onclick = () => {
+            darkModeIcon.classList.toggle('bx-sun');
+            document.body.classList.toggle('dark-mode');
+        };
+
+
+        /* scroll reveal*/
+        ScrollReveal({
+            distance: '80px',
+            duration: 2000,
+            delay: 200
+        });
+
+        ScrollReveal().reveal('.home-content, .heading', {
+            origin: 'top'
+        });
+        ScrollReveal().reveal('.home-img img, .services-container, .portfolio-box, .testimonial-wrapper, .contact form', {
+            origin: 'bottom'
+        });
+        ScrollReveal().reveal('.home-content h1, .about-img img', {
+            origin: 'left'
+        });
+        ScrollReveal().reveal('.home-content h3, .home-content p, .about-content', {
+            origin: 'right'
+        });
+    </script>
+</body>
+
+</html>
